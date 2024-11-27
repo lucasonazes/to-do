@@ -2,7 +2,7 @@ import User from "./User";
 import Tag from "./Tag";
 import Project from "./Project";
 
-export default interface Tarefa {
+export default interface Task {
   id: number;
   title?: string;
   description?: string;

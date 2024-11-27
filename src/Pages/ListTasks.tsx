@@ -1,48 +1,119 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Task from '../Models/Task';
+import { Link } from 'react-router-dom';
 
 const ListTasks: React.FC = () => {
-    const [tarefas, setTarefas] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/tarefas/listar')
+        axios.get('http://localhost:5000/api/tasks/list')
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro na requisição: ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                setTarefas(data);
+                setTasks(response.data);
             })
             .catch(error => {
-                console.error('Erro:', error);
+                console.error('Erro na requisição:', error.message);
             });
     }, []);
 
+    const fetchTasks = () => {
+    axios
+        .get('http://localhost:5000/api/tasks/list')
+        .then(response => {
+            setTasks(response.data)
+        })
+        .catch(error => {
+            console.error('Erro ao buscar tarefas:', error)
+        });
+    };
+
+    const deleteTask = (taskId: number) => {
+        const confirmDelete = window.confirm('Tem certeza de que deseja excluir esta tarefa?');
+        if (confirmDelete) {
+            axios
+            .delete(`http://localhost:5000/api/tasks/delete/${taskId}`)
+            .then(() => {
+                alert('Tarefa excluída com sucesso!');
+                fetchTasks(); // Atualiza a lista de tarefas após exclusão
+            })
+            .catch((error) => {
+                console.error('Erro ao excluir tarefa:', error);
+                alert('Não foi possível excluir a tarefa.');
+            });
+        }
+    }
+
+    function getTextColor(backgroundColor: string | undefined): string {
+        if (!backgroundColor) return '#000'; // Cor padrão (preto)
+        const hex = backgroundColor.replace('#', '');
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luminance > 0.5 ? '#000' : '#fff'; // Texto preto ou branco dependendo da luminosidade
+    }
+
     return (
-        <div>
-            <h1>Lista de Produtos</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Descrição</th>
-                        <th>Status</th>
-                        <th>CriadoEm</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tarefas.map(tarefa => (
-                        <tr key={tarefa.id}>
-                            <td>{tarefa.title}</td>
-                            <td>{tarefa.description}</td>
-                            <td>{tarefa.status}</td>
-                            <td>{tarefa.createdAt}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className='container'>
+            <div className='table-container'>
+                <div className='table-header'>
+                    <h1>Lista de Tarefas</h1>
+                    <div className="button-container">
+                        <Link to="/pages/tasks/new" className="new-task-button">Nova Tarefa</Link>
+                    </div>
+                </div>
+                <div className="table-scroll">
+                    <table className='styled-table'>
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Criada em</th>
+                                <th>Data de Conclusão</th>
+                                <th>Status</th>
+                                <th>Usuário</th>
+                                <th>Projeto</th>
+                                <th>Tag</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tasks.map(task => (
+                                <tr key={task.id}>
+                                    <td>{task.title}</td>
+                                    <td>{task.description}</td>
+                                    <td>{new Date(task.createdAt).toLocaleDateString()}</td>
+                                    <td>{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : ''}</td>
+                                    <td>{task.status}</td>
+                                    <td>{task.user?.name || ''}</td>
+                                    <td>{task.project?.name || ''}</td>
+                                    <td>
+                                        {task.tag && (
+                                        <span
+                                            className="tag-badge"
+                                            style={{
+                                            backgroundColor: task.tag.color || '#ccc',
+                                            color: getTextColor(task.tag.color),
+                                            }}
+                                        >
+                                            {task.tag.name || 'Sem nome'}
+                                        </span>
+                                        )}
+                                    </td>
+                                    <td>
+                                    <button
+                                        className="delete-task-button"
+                                        onClick={() => deleteTask(task.id)}
+                                    >
+                                        Excluir
+                                    </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };

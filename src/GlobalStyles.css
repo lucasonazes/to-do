@@ -1,147 +1,273 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+  color: #333;
+  background-color: #f4f4f9;
+}
+
+.header {
+  width: 100%;
+  background-color: #007bff;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.header li {
+  margin: 0 15px;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.header a:hover {
+  color: #f4f4f9;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.home-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px 20px 50px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+.table-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 50px;
+}
+
+h1 {
+  color: #007bff;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.styled-table thead tr {
+  background-color: #007bff;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #007bff;
+}
+
+.styled-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .styled-table td,
+  .styled-table th {
+    font-size: 0.9rem;
+    padding: 10px;
   }
-  
-  html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.5;
-    color: #333;
-    background-color: #f4f4f9;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box;
-    margin: 0;
-  }
-  
-  .header {
-    width: 100%;
-    background-color: #007bff;
-    padding: 20px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-  
-  .header ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .header li {
-    margin: 0 15px;
-  }
-  
-  .header a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-  
-  .header a:hover {
-    color: #f4f4f9;
-  }
-  
-  .home-container {
-    text-align: center;
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    margin-top: 100px;
-  }
-  
+
   h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #007bff;
-  }
-  
-  p {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-  
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-  
-    p {
-      font-size: 1rem;
-    }
-  
-    .home-container {
-      padding: 20px;
-    }
-  
-    .header a {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 1.5rem;
-    }
-  
-    p {
-      font-size: 0.9rem;
-    }
-  
-    .header a {
-      font-size: 0.9rem;
-    }
-  }
-  
-  /* Estilos para a Página de Erro 404 */
-  .error-container {
-    text-align: center;
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    margin-top: 120px;
-  }
-  
-  .error-container h1 {
-    font-size: 3rem;
-    color: #ff0000;
-    margin-bottom: 20px;
-  }
-  
-  .error-container p {
     font-size: 1.5rem;
-    color: #555;
-    margin-bottom: 20px;
   }
-  
-  .error-container a {
-    font-size: 1.2rem;
-    color: #007bff;
-    text-decoration: none;
+
+  .table-container {
+    padding: 15px;
   }
-  
-  .error-container a:hover {
-    text-decoration: underline;
-  }  
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-task-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.new-task-button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  text-decoration: none;
+}
+
+.create-task-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.create-task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.create-task-header h1 {
+  font-size: 2rem;
+  color: #007bff;
+}
+
+.create-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-task-form label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.create-task-form input,
+.create-task-form textarea,
+.create-task-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-task-form input:focus,
+.create-task-form textarea:focus,
+.create-task-form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.create-task-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.create-task-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.create-task-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-task-button:hover {
+  background-color: #0056b3;
+}
+
+.create-task-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto; /* Adiciona rolagem horizontal */
+}
+
+.tag-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap; /* Garante que a tag não quebre em várias linhas */
+  min-width: 50px; /* Define um tamanho mínimo */
+}
