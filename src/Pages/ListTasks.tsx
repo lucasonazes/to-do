@@ -102,7 +102,7 @@ const ListTasks: React.FC = () => {
                                             color: getTextColor(task.tag.color),
                                             }}
                                         >
-                                            {task.tag.name || 'Sem nome'}
+                                            {task.tag.name || 'Sem tag'}
                                         </span>
                                         )}
                                     </td>
