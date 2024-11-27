@@ -33,8 +33,7 @@ const ListTasks: React.FC = () => {
             axios
             .delete(`http://localhost:5000/api/tasks/delete/${taskId}`)
             .then(() => {
-                alert('Tarefa excluída com sucesso!');
-                fetchTasks(); // Atualiza a lista de tarefas após exclusão
+                fetchTasks();
             })
             .catch((error) => {
                 console.error('Erro ao excluir tarefa:', error);

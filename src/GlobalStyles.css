@@ -271,3 +271,32 @@ a {
   white-space: nowrap; /* Garante que a tag não quebre em várias linhas */
   min-width: 50px; /* Define um tamanho mínimo */
 }
+
+.delete-task-button {
+  background-color: #ff4d4f; /* Vermelho claro */
+  color: white; /* Texto branco */
+  border: none; /* Sem bordas */
+  padding: 10px 15px; /* Espaçamento interno */
+  font-size: 0.9rem; /* Tamanho do texto */
+  font-weight: bold; /* Texto em negrito */
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor para indicar clicável */
+  display: flex; /* Para alinhar texto e ícone */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 5px; /* Espaço entre ícone e texto */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+}
+
+.delete-task-button:hover {
+  background-color: #d9363e; /* Vermelho mais escuro ao passar o mouse */
+  transform: scale(1.05); /* Efeito de "crescer" levemente */
+}
+
+.delete-task-button:active {
+  transform: scale(0.95); /* Efeito de "pressionar" ao clicar */
+}
+
+.delete-task-button:focus {
+  outline: 2px solid #ff8083; /* Realce de foco acessível */
+  outline-offset: 2px;
+}
