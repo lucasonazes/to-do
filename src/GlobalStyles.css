@@ -272,31 +272,75 @@ a {
   min-width: 50px; /* Define um tamanho mínimo */
 }
 
+.action-buttons {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+.edit-task-button,
 .delete-task-button {
-  background-color: #ff4d4f; /* Vermelho claro */
-  color: white; /* Texto branco */
-  border: none; /* Sem bordas */
-  padding: 10px 15px; /* Espaçamento interno */
-  font-size: 0.9rem; /* Tamanho do texto */
-  font-weight: bold; /* Texto em negrito */
-  border-radius: 8px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor para indicar clicável */
-  display: flex; /* Para alinhar texto e ícone */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 5px; /* Espaço entre ícone e texto */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaço entre o ícone e o texto */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-task-button {
+  background-color: #4caf50; /* Verde */
+  color: white;
+}
+
+.edit-task-button:hover {
+  background-color: #45a049; /* Verde mais escuro ao passar o mouse */
+  transform: scale(1.05);
+}
+
+.edit-task-button:active {
+  transform: scale(0.95);
+}
+
+.edit-task-button:focus {
+  outline: 2px solid #9bc89d; /* Realce para acessibilidade */
+  outline-offset: 2px;
+}
+
+.delete-task-button {
+  background-color: #ff4d4f; /* Vermelho */
+  color: white;
 }
 
 .delete-task-button:hover {
-  background-color: #d9363e; /* Vermelho mais escuro ao passar o mouse */
-  transform: scale(1.05); /* Efeito de "crescer" levemente */
+  background-color: #d9363e; /* Vermelho mais escuro */
+  transform: scale(1.05);
 }
 
 .delete-task-button:active {
-  transform: scale(0.95); /* Efeito de "pressionar" ao clicar */
+  transform: scale(0.95);
 }
 
 .delete-task-button:focus {
-  outline: 2px solid #ff8083; /* Realce de foco acessível */
+  outline: 2px solid #ff8083; /* Realce para acessibilidade */
   outline-offset: 2px;
+}
+
+.cancel-task-button {
+  background-color: #f44336; /* Vermelho */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.cancel-task-button:hover {
+  background-color: #d32f2f; /* Vermelho mais escuro */
 }

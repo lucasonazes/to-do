@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Task from '../Models/Task';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ListTasks: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
@@ -41,15 +42,21 @@ const ListTasks: React.FC = () => {
             });
         }
     }
+     
+    const navigate = useNavigate();
+        
+    const editTask = (taskId: number) => {
+        navigate(`/pages/tasks/edit/${taskId}`);
+    };
 
     function getTextColor(backgroundColor: string | undefined): string {
-        if (!backgroundColor) return '#000'; // Cor padrão (preto)
+        if (!backgroundColor) return '#000';
         const hex = backgroundColor.replace('#', '');
         const r = parseInt(hex.substring(0, 2), 16);
         const g = parseInt(hex.substring(2, 4), 16);
         const b = parseInt(hex.substring(4, 6), 16);
         const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-        return luminance > 0.5 ? '#000' : '#fff'; // Texto preto ou branco dependendo da luminosidade
+        return luminance > 0.5 ? '#000' : '#fff';
     }
 
     return (
@@ -100,12 +107,20 @@ const ListTasks: React.FC = () => {
                                         )}
                                     </td>
                                     <td>
-                                    <button
-                                        className="delete-task-button"
-                                        onClick={() => deleteTask(task.id)}
-                                    >
-                                        Excluir
-                                    </button>
+                                        <div className="action-buttons">
+                                            <button
+                                                className="edit-task-button"
+                                                onClick={() => editTask(task.id)}
+                                            >
+                                                ✏️ Editar
+                                            </button>
+                                            <button
+                                                className="delete-task-button"
+                                                onClick={() => deleteTask(task.id)}
+                                            >
+                                                🗑️ Excluir
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
