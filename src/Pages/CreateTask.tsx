@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const CreateTask: React.FC = () => {
   const [title, setTitle] = useState<string>('');
@@ -35,16 +36,20 @@ const CreateTask: React.FC = () => {
 
     axios
       .post('http://localhost:5000/api/tasks/create', taskData)
-      .then((response) => {
-        console.log('Tarefa criada com sucesso', response.data);
-        alert('Tarefa criada com sucesso');
+      .then(() => {
+        toast.success('Tarefa criada com sucesso');
         navigate('/pages/tasks/list');
       })
       .catch((error) => {
         console.error('Erro ao criar tarefa:', error);
+        toast.error('Erro ao criar tarefa');
       });
   };
 
+  const handleCancel = () => {
+    navigate('/pages/tasks/list');
+  };
+  
   return (
     <div className='container'>
         <div className="create-task-container">
@@ -125,9 +130,16 @@ const CreateTask: React.FC = () => {
             </select>
 
             <div className="form-actions">
-            <button className="create-task-button" type="submit">
-                Criar Tarefa
-            </button>
+              <button
+                type="button"
+                className="cancel-task-button"
+                onClick={handleCancel}
+              >
+                Cancelar
+              </button>
+              <button className="create-task-button" type="submit">
+                  Criar Tarefa
+              </button>
             </div>
         </form>
         </div>

@@ -4,11 +4,13 @@ import Home from './Pages/Home';
 import ListTasks from './Pages/ListTasks';
 import CreateTask from './Pages/CreateTask';
 import EditTask from './Pages/EditTask';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div id="app">
       <BrowserRouter>
+        <Toaster />
         <nav className="header">
           <ul>
             <li><Link to="/">Home</Link></li>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const EditTask: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); // Obtém o id da tarefa da URL
+  const { id } = useParams<{ id: string }>();
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [dueDate, setDueDate] = useState<string>('');
-  const [status, setStatus] = useState<string>(''); // Adicionado o estado para o status
+  const [status, setStatus] = useState<string>('');
   const [user, setUser] = useState<number | string>('');
   const [tag, setTag] = useState<number | string>('');
   const [project, setProject] = useState<number | string>('');
@@ -18,24 +19,23 @@ const EditTask: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Busca os dados da tarefa para preencher os campos
     axios
       .get(`http://localhost:5000/api/tasks/${id}`)
       .then((response) => {
         const task = response.data;
         setTitle(task.title);
         setDescription(task.description);
-        setDueDate(task.dueDate ? task.dueDate.split('T')[0] : ''); // Formato para input date
-        setStatus(task.status || ''); // Preenche o status com o valor da tarefa
+        setDueDate(task.dueDate ? task.dueDate.split('T')[0] : '');
+        setStatus(task.status || '');
         setUser(task.user?.id || '');
         setTag(task.tag?.id || '');
         setProject(task.project?.id || '');
       })
       .catch((error) => {
         console.error('Erro ao buscar tarefa:', error);
+        toast.error('Erro ao buscar tarefa');
       });
 
-    // Busca dados para os selects
     axios.get('http://localhost:5000/api/users/list').then((response) => setUsers(response.data));
     axios.get('http://localhost:5000/api/tags/list').then((response) => setTags(response.data));
     axios.get('http://localhost:5000/api/projects/list').then((response) => setProjects(response.data));
@@ -56,13 +56,13 @@ const EditTask: React.FC = () => {
 
     axios
       .put(`http://localhost:5000/api/tasks/update/${id}`, taskData)
-      .then((response) => {
-        console.log('Tarefa atualizada com sucesso', response.data);
-        alert('Tarefa atualizada com sucesso');
+      .then(() => {
+        toast.success('Tarefa atualizada com sucesso');
         navigate('/pages/tasks/list');
       })
       .catch((error) => {
         console.error('Erro ao atualizar tarefa:', error);
+        toast.error('Erro ao atualizar tarefa');
       });
   };
 
@@ -112,8 +112,8 @@ const EditTask: React.FC = () => {
             required
           >
             <option value="">Selecione o status</option>
-            <option value="Aberta">Aberta</option>
-            <option value="Em Progresso">Em Progresso</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Em progresso">Em progresso</option>
             <option value="Concluída">Concluída</option>
           </select>
 

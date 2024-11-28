@@ -152,6 +152,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .new-task-button {
@@ -339,8 +340,36 @@ a {
   font-size: 1rem;
   transition: background-color 0.3s ease;
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .cancel-task-button:hover {
   background-color: #d32f2f; /* Vermelho mais escuro */
+}
+
+.search-box {
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-end; /* Alinha os filtros à direita */
+  gap: 15px; /* Espaçamento entre os filtros */
+  margin-top: 10px; /* Distância do botão Nova Tarefa */
+}
+
+.filter-select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
 }
