@@ -27,9 +27,9 @@ function App() {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/pages/tasks/list">Tarefas</Link></li>
-            <li><Link to="/pages/Users/list">Users</Link></li>
+            <li><Link to="/pages/Users/list">Usuários</Link></li>
             <li><Link to="/pages/tags/list">Tags</Link></li>
-            <li><Link to="/pages/projects/list">Projects</Link></li>
+            <li><Link to="/pages/projects/list">Projetos</Link></li>
           </ul>
         </nav>
 
