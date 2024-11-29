@@ -50,7 +50,6 @@ const ListTasks: React.FC = () => {
                 })
                 .catch((error) => {
                     console.error('Erro ao excluir tarefa:', error);
-                    toast.error('Não foi possível excluir a tarefa');
                 });
         }
     };

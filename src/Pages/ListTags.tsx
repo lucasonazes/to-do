@@ -36,7 +36,6 @@ const ListTags: React.FC = () => {
                 })
                 .catch((error) => {
                     console.error('Erro ao excluir tag:', error);
-                    toast.error('Não foi possível excluir a tag');
                 });
         }
     };

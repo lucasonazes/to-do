@@ -25,7 +25,6 @@ const CreateUser: React.FC = () => {
       })
       .catch((error) => {
         console.error('Erro ao criar usuário:', error);
-        toast.error('Erro ao criar usuário');
       });
   };
 

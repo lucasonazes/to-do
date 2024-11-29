@@ -22,7 +22,6 @@ const EditUser: React.FC = () => {
         })
         .catch((error) => {
           console.error("Erro ao carregar usuário:", error);
-          toast.error("Erro ao carregar os dados do usuário");
         });
     }
   }, [id]); // Recarrega sempre que o ID mudar
@@ -44,7 +43,6 @@ const EditUser: React.FC = () => {
       })
       .catch((error) => {
         console.error("Erro ao atualizar usuário:", error);
-        toast.error("Erro ao atualizar usuário");
       });
   };
 

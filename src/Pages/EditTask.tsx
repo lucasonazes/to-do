@@ -33,7 +33,6 @@ const EditTask: React.FC = () => {
       })
       .catch((error) => {
         console.error('Erro ao buscar tarefa:', error);
-        toast.error('Erro ao buscar tarefa');
       });
 
     axios.get('http://localhost:5000/api/users/list').then((response) => setUsers(response.data));
@@ -62,7 +61,6 @@ const EditTask: React.FC = () => {
       })
       .catch((error) => {
         console.error('Erro ao atualizar tarefa:', error);
-        toast.error('Erro ao atualizar tarefa');
       });
   };
 

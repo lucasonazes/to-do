@@ -28,7 +28,6 @@ const CreateTag: React.FC = () => {
       })
       .catch((error) => {
         console.error('Erro ao criar tag:', error);
-        toast.error('Erro ao criar tag');
       });
   };
 

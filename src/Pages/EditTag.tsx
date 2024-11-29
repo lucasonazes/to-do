@@ -22,7 +22,6 @@ const EditTag: React.FC = () => {
         })
         .catch((error) => {
           console.error("Erro ao carregar tag:", error);
-          toast.error("Erro ao carregar os dados da tag");
         });
     }
   }, [id]); // Recarrega sempre que o ID mudar
@@ -44,7 +43,6 @@ const EditTag: React.FC = () => {
       })
       .catch((error) => {
         console.error("Erro ao atualizar tag:", error);
-        toast.error("Erro ao atualizar tag");
       });
   };
 
