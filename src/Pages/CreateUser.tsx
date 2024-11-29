@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 const CreateUser: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
