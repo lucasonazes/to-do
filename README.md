@@ -2,7 +2,9 @@
 
 This is a React-based frontend for a task management application. It allows users to create, edit, and manage tasks, projects, tags, and users.
 
-## Features
+---
+
+## 🚀 Features
 
 - Create, edit, and delete tasks
 - Assign tasks to users, projects, and tags
@@ -10,21 +12,26 @@ This is a React-based frontend for a task management application. It allows user
 - Manage users, projects, and tags
 - Responsive and user-friendly interface
 
-## Technologies Used
+---
+
+## 🔨 Technologies Used
 
 - React
 - TypeScript
 - Axios (for API requests)
 - React Router DOM (for navigation)
 - React Hot Toast (for notifications)
-- CSS for styling
 
-## Getting Started
+---
 
-### Prerequisites
+## 📋 Requirements
 
 - Node.js (v14 or higher recommended)
 - npm
+
+---
+
+## ⚡ Getting Started
 
 ### Installation
 
@@ -50,7 +57,9 @@ This is a React-based frontend for a task management application. It allows user
 
 This frontend expects a backend API running at `http://localhost:5000`. Make sure the backend is running and accessible.
 
-## Project Structure
+---
+
+## 🏗️ Project Structure
 
 ```
 src/
@@ -78,6 +87,8 @@ src/
     ListUsers.tsx
 ```
 
-## License
+---
+
+## 📋 License
 
 This project is licensed under the MIT License.
